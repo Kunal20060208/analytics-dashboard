@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Tailwind v4 dark mode support */
+@custom-variant dark (&:where(.dark, .dark *));
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+  min-height:100%;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f8fafc;
+  color:#0f172a;
+  transition:
+    background-color .3s ease,
+    color .3s ease;
+}
+
+/* Manual fallback colors */
+
+.dark body{
+  background:#020617;
+  color:#f8fafc;
+}
+
+.dark .bg-white{
+  background:#0f172a !important;
+  color:#f8fafc;
+}
+
+.dark .border{
+  border-color:#334155 !important;
+}
+
+.dark .text-gray-500{
+  color:#94a3b8 !important;
+}
+
+/* Authentication Inputs */
+
+.auth-input{
+  width:100%;
+  padding:16px 20px;
+  border-radius:16px;
+  border:1px solid #cbd5e1;
+  background:#f8fafc;
+  color:#0f172a;
+  outline:none;
+  transition:all .2s ease;
+}
+
+.auth-input::placeholder{
+  color:#94a3b8;
+}
+
+.auth-input:focus{
+  border-color:#8b5cf6;
+  box-shadow:0 0 0 3px rgba(139,92,246,.25);
+}
+
+.dark .auth-input{
+  background:#1e293b;
+  border-color:#475569;
+  color:white;
+}
+
+.dark .auth-input::placeholder{
+  color:#94a3b8;
+}
+
+/* Disable text selection */
+
+*{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+/* Allow typing inside inputs */
+
+input,
+textarea,
+select{
+    -webkit-user-select:text;
+    -moz-user-select:text;
+    -ms-user-select:text;
+    user-select:text;
+}
+
+img{
+    pointer-events:none;
+    -webkit-user-drag:none;
+}
