@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📊 Analytics Dashboard
 
 A modern, responsive, and feature-rich Analytics Dashboard built using **React**, **Vite**, **Tailwind CSS**, and **Chart.js**. The project provides a complete dashboard experience with secure authentication, role-based access control, interactive analytics, user management, multilingual support, profile management, and customizable settings.
@@ -33,3 +34,7 @@ A modern, responsive, and feature-rich Analytics Dashboard built using **React**
 * Local Storage
 
 This project was developed as part of a Frontend Internship to demonstrate modern React development practices, state management, responsive UI design, authentication flow, reusable components, and interactive data visualization.
+=======
+# analytics-dashboard
+A modern React-based Analytics Dashboard featuring authentication, role-based admin panel, interactive charts, data management, multilingual support, dark mode, mail system, profile management, and responsive UI.
+>>>>>>> 148d9279822f3886bedf7541515af49791669231
