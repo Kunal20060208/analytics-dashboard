@@ -139,8 +139,15 @@ sortOrder
 ]);
 
 console.log({
-    rowsPerPage,
-    filteredLength: filteredData.length
+
+rowsPerPage,
+
+safeRows,
+
+filteredLength:filteredData.length,
+
+totalPages
+
 });
 
 const safeRows=
@@ -165,18 +172,6 @@ Math.ceil(filteredData.length/safeRows)
 1
 
 );
-
-console.log({
-
-rowsPerPage,
-
-safeRows,
-
-filteredLength:filteredData.length,
-
-totalPages
-
-});
 
 const paginatedData=filteredData.slice(
 
