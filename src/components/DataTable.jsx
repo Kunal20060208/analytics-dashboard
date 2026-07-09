@@ -143,19 +143,34 @@ console.log({
     filteredLength: filteredData.length
 });
 
-const totalPages=Math.ceil(
+const safeRows=
 
-filteredData.length/
-
+rowsPerPage>0
+?
 rowsPerPage
+:
+10;
+
+const totalPages=Math.max(
+
+1,
+
+Number.isFinite(Math.ceil(filteredData.length/safeRows))
+?
+
+Math.ceil(filteredData.length/safeRows)
+
+:
+
+1
 
 );
 
 const paginatedData=filteredData.slice(
 
-(currentPage-1)*rowsPerPage,
+(currentPage-1)*safeRows,
 
-currentPage*rowsPerPage
+currentPage*safeRows
 
 );
 
@@ -348,7 +363,7 @@ value={status}
 
 <select
 
-value={rowsPerPage}
+value={safeRows}
 
 onChange={e=>{
 
@@ -668,7 +683,7 @@ filteredData.length===0
 
 :
 
-(currentPage-1)*rowsPerPage+1
+(currentPage-1)*safeRows+1
 
 }
 
@@ -682,7 +697,7 @@ to
 
 Math.min(
 
-currentPage*rowsPerPage,
+currentPage*safeRows,
 
 filteredData.length
 
@@ -749,7 +764,17 @@ Previous
 </button>
 
 {
+console.log({
 
+rowsPerPage,
+
+safeRows,
+
+filteredLength:filteredData.length,
+
+totalPages
+
+});
 Array.from(
 
 {

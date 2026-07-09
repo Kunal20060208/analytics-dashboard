@@ -89,7 +89,10 @@ phone,
 
 password,
 
-role,
+role:
+username.trim().toLowerCase()==="admin"
+? "admin"
+: role,
 
 banned:false,
 

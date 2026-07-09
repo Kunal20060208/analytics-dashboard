@@ -163,10 +163,8 @@ lastLogin:user.lastLogin
 const result=
 
 updateUserProfile(
-
-user,
+user.id,
 updatedData
-
 );
 
 if(result.success){
@@ -203,7 +201,7 @@ const result=
 
 changeUserPassword(
 
-user,
+user.id,
 oldPassword,
 newPassword
 

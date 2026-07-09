@@ -34,93 +34,125 @@ import "./utils/errorHandler";
 
 function AppWrapper() {
 
-    useEffect(() => {
+    useEffect(()=>{
 
-        const disableContextMenu = (e) => {
-            e.preventDefault();
-        };
+const disableContextMenu=(e)=>{
 
-        document.addEventListener(
-            "contextmenu",
-            disableContextMenu
-        );
+e.preventDefault();
 
-        return () => {
-            document.removeEventListener(
-                "contextmenu",
-                disableContextMenu
-            );
-        };
+};
 
-        const disableKeys = (e) => {
+const disableKeys=(e)=>{
 
-        /* F12 */
+/* F12 */
 
-        if (e.key === "F12") {
-            e.preventDefault();
-        }
+if(e.key==="F12"){
 
-        /* Ctrl+Shift+I */
+e.preventDefault();
 
-        if (
-            e.ctrlKey &&
-            e.shiftKey &&
-            e.key.toUpperCase() === "I"
-        ) {
-            e.preventDefault();
-        }
+}
 
-        /* Ctrl+Shift+J */
+/* Ctrl+Shift+I */
 
-        if (
-            e.ctrlKey &&
-            e.shiftKey &&
-            e.key.toUpperCase() === "J"
-        ) {
-            e.preventDefault();
-        }
+if(
 
-        /* Ctrl+Shift+C */
+e.ctrlKey
+&&
+e.shiftKey
+&&
+e.key.toUpperCase()==="I"
 
-        if (
-            e.ctrlKey &&
-            e.shiftKey &&
-            e.key.toUpperCase() === "C"
-        ) {
-            e.preventDefault();
-        }
+){
 
-        /* Ctrl+U */
+e.preventDefault();
 
-        if (
-            e.ctrlKey &&
-            e.key.toUpperCase() === "U"
-        ) {
-            e.preventDefault();
-        }
+}
 
-    };
+/* Ctrl+Shift+J */
 
-    document.addEventListener(
-        "keydown",
-        disableKeys
-    );
+if(
 
-    return () => {
+e.ctrlKey
+&&
+e.shiftKey
+&&
+e.key.toUpperCase()==="J"
 
-        document.removeEventListener(
-            "contextmenu",
-            disableContextMenu
-        );
+){
 
-        document.removeEventListener(
-            "keydown",
-            disableKeys
-        );
+e.preventDefault();
 
-    };
+}
 
-    }, []);
+/* Ctrl+Shift+C */
+
+if(
+
+e.ctrlKey
+&&
+e.shiftKey
+&&
+e.key.toUpperCase()==="C"
+
+){
+
+e.preventDefault();
+
+}
+
+/* Ctrl+U */
+
+if(
+
+e.ctrlKey
+&&
+e.key.toUpperCase()==="U"
+
+){
+
+e.preventDefault();
+
+}
+
+};
+
+document.addEventListener(
+
+"contextmenu",
+
+disableContextMenu
+
+);
+
+document.addEventListener(
+
+"keydown",
+
+disableKeys
+
+);
+
+return()=>{
+
+document.removeEventListener(
+
+"contextmenu",
+
+disableContextMenu
+
+);
+
+document.removeEventListener(
+
+"keydown",
+
+disableKeys
+
+);
+
+};
+
+},[]);
 
     return <App />;
 

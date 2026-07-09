@@ -30,9 +30,19 @@ function getNumber(key,defaultValue){
 
 const value=Number(localStorage.getItem(key));
 
-return Number.isNaN(value)
-?defaultValue
-:value;
+if(
+
+!Number.isFinite(value)
+||
+value<=0
+
+){
+
+return defaultValue;
+
+}
+
+return value;
 
 }
 
