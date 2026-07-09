@@ -138,18 +138,6 @@ sortBy,
 sortOrder
 ]);
 
-console.log({
-
-rowsPerPage,
-
-safeRows,
-
-filteredLength:filteredData.length,
-
-totalPages
-
-});
-
 const safeRows=
 
 rowsPerPage>0
