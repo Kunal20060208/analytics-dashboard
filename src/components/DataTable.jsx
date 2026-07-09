@@ -166,6 +166,18 @@ Math.ceil(filteredData.length/safeRows)
 
 );
 
+console.log({
+
+rowsPerPage,
+
+safeRows,
+
+filteredLength:filteredData.length,
+
+totalPages
+
+});
+
 const paginatedData=filteredData.slice(
 
 (currentPage-1)*safeRows,
@@ -764,17 +776,6 @@ Previous
 </button>
 
 {
-console.log({
-
-rowsPerPage,
-
-safeRows,
-
-filteredLength:filteredData.length,
-
-totalPages
-
-});
 Array.from(
 
 {
