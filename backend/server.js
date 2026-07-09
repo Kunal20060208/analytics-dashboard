@@ -2,46 +2,53 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
+import path from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config();
+const __filename=fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
 
-const app = express();
+dotenv.config({
+    path:path.resolve(__dirname,"../.env")
+});
+
+const app=express();
 
 app.use(cors());
 
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
+const transporter=nodemailer.createTransport({
 
-    service: "gmail",
+    service:"gmail",
 
-    auth: {
+    auth:{
 
-        user: process.env.EMAIL,
+        user:process.env.EMAIL,
 
-        pass: process.env.PASSWORD
+        pass:process.env.PASSWORD
 
     }
 
 });
 
-app.get("/", (req, res) => {
+app.get("/",(req,res)=>{
 
     res.json({
 
-        success: true,
+        success:true,
 
-        message: "Analytics Dashboard Mail API Running"
+        message:"Analytics Dashboard Mail API Running"
 
     });
 
 });
 
-app.post("/send-mail", async (req, res) => {
+app.post("/api/send-mail",async(req,res)=>{
 
-    try {
+    try{
 
-        const {
+        const{
 
             to,
 
@@ -49,15 +56,15 @@ app.post("/send-mail", async (req, res) => {
 
             message
 
-        } = req.body;
+        }=req.body;
 
-        if (!to || !subject || !message) {
+        if(!to||!subject||!message){
 
             return res.status(400).json({
 
-                success: false,
+                success:false,
 
-                message: "Missing fields"
+                message:"Missing required fields."
 
             });
 
@@ -65,35 +72,35 @@ app.post("/send-mail", async (req, res) => {
 
         await transporter.sendMail({
 
-            from: `"Analytics Dashboard" <${process.env.EMAIL}>`,
+            from:`"Analytics Dashboard" <${process.env.EMAIL}>`,
 
             to,
 
             subject,
 
-            html: message
+            html:message
 
         });
 
         res.json({
 
-            success: true,
+            success:true,
 
-            message: "Mail sent successfully"
+            message:"Mail sent successfully."
 
         });
 
     }
 
-    catch (err) {
+    catch(error){
 
-        console.error(err);
+        console.error(error);
 
         res.status(500).json({
 
-            success: false,
+            success:false,
 
-            message: err.message
+            message:error.message
 
         });
 
@@ -101,10 +108,11 @@ app.post("/send-mail", async (req, res) => {
 
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT=process.env.PORT||5000;
 
-app.listen(PORT, () => {
+app.listen(PORT,()=>{
 
-    console.log(`Mail Server Running on http://localhost:${PORT}`);
+    console.log(`🚀 Mail Server Running`);
+    console.log(`http://localhost:${PORT}`);
 
 });

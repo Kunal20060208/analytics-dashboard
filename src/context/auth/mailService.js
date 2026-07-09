@@ -12,11 +12,17 @@ generateId
 
 }from "./storage";
 
+const API_URL=
 
+window.location.hostname==="localhost"
 
-const API_URL="http://localhost:5000";
+?
 
+"http://localhost:5000"
 
+:
+
+"";
 
 export async function sendMail(
 
@@ -27,6 +33,18 @@ subject,
 message
 
 ){
+
+if(!target){
+
+return{
+
+success:false,
+
+message:"Target user not found."
+
+};
+
+}
 
 const finalMessage=
 
@@ -48,7 +66,7 @@ const response=
 
 await fetch(
 
-`${API_URL}/send-mail`,
+`${API_URL}/api/send-mail`,
 
 {
 
@@ -80,7 +98,7 @@ await response.json();
 
 status=
 
-responseData.success
+response.ok&&responseData.success
 
 ?
 
@@ -146,10 +164,6 @@ mail
 
 }
 
-
-
-
-
 export async function sendMailToUser(
 
 id,
@@ -194,10 +208,6 @@ message
 
 }
 
-
-
-
-
 export async function broadcastMail(
 
 subject,
@@ -238,19 +248,11 @@ results
 
 }
 
-
-
-
-
 export function getMailHistory(){
 
 return getMails();
 
 }
-
-
-
-
 
 export function markMailRead(id){
 
@@ -286,10 +288,6 @@ success:true
 
 }
 
-
-
-
-
 export function deleteMail(id){
 
 let mails=getMails();
@@ -312,10 +310,6 @@ success:true
 
 }
 
-
-
-
-
 export function clearMailHistory(){
 
 saveMails([]);
@@ -327,10 +321,6 @@ success:true
 };
 
 }
-
-
-
-
 
 export function searchMails(search){
 
@@ -360,10 +350,6 @@ mail.message.toLowerCase().includes(text)
 
 }
 
-
-
-
-
 export function getUnreadCount(){
 
 return getMails().filter(
@@ -373,10 +359,6 @@ mail=>!mail.read
 ).length;
 
 }
-
-
-
-
 
 export function getMailStatistics(){
 
@@ -414,10 +396,6 @@ m=>!m.read
 
 }
 
-
-
-
-
 export async function resendMail(id){
 
 const mails=getMails();
@@ -434,7 +412,9 @@ if(!mail){
 
 return{
 
-success:false
+success:false,
+
+message:"Mail not found."
 
 };
 
@@ -454,7 +434,9 @@ if(!target){
 
 return{
 
-success:false
+success:false,
+
+message:"User not found."
 
 };
 
