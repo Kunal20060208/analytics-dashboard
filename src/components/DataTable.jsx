@@ -138,6 +138,11 @@ sortBy,
 sortOrder
 ]);
 
+console.log({
+    rowsPerPage,
+    filteredLength: filteredData.length
+});
+
 const totalPages=Math.ceil(
 
 filteredData.length/
