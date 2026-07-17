@@ -35,4 +35,4 @@ A modern, responsive, and feature-rich Analytics Dashboard built using **React**
 This project was developed as part of a Frontend Internship to demonstrate modern React development practices, state management, responsive UI design, authentication flow, reusable components, and interactive data visualization.
 =======
 # analytics-dashboard
-A modern React-based Analytics Dashboard featuring authentication, role-based admin panel, interactive charts, data management, multilingual support, dark mode, mail system, profile management, and responsive UI.
+A modern React-based Analytics Dashboard featuring authentication, role-based admin panel, interactive charts, data management, multilingual support, dark mode, mail system, profile management, and responsive UI developed by Kunal Arya.
